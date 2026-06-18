@@ -1,7 +1,11 @@
 .box
   .box-header
-    = link_to new_modal_clients_path, remote: true, data: { disable_with: "<i class='fa fa-circle-o-notch fa-spin'></i>" } do 
+    .box-header-title
+      = tm(Client, :title)
+      %span.box-header-count.text-muted= @clients.length > 0 ? @clients.length : ''
+    = link_to new_modal_clients_path, class: "btn btn-primary", remote: true do 
       = fa_icon(:plus)
+      = tc(:new)
   .box-body
     %table
       %thead
@@ -12,9 +16,9 @@
           %th= tm(Client, :status)
           %th= tm(Client, :source)
           %th= tm(Client, :comment)
-      %tbody
+      %tbody#clients-list
         - @clients.each do |client|
-          %tr
+          %tr.client-row{ data: { client_id: client.id } }
             %td= client.name
             %td= client.phone
             %td= client.email

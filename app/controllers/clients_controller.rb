@@ -28,7 +28,7 @@ class ClientsController < ApplicationController
 
   def update
     @client = Client.find(params[:id])
-    @updated = @client.update(client_params)
+    @updated = @client.update(client_params) if current_user.can_interact_with_client?(@client)
 
     @clients = Client.all
     respond_to :js

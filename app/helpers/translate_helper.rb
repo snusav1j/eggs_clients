@@ -24,6 +24,10 @@ module TranslateHelper
     I18n.t("activerecord.models.#{model_key}", default: model_key.to_s.humanize)
   end
 
+  def tc(key, options = {})
+    I18n.t("controller.#{controller.controller_name}.#{key}", **options)
+  end
+  
   private
 
   def sanitize(text)

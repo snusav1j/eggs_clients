@@ -28,8 +28,7 @@
       #content
         - if current_user
           .content-header
-            %strong= current_page_name
-            .content-header-items
+            .content-header-controls
               .content-header-item
                 = link_to user_path(current_user) do
                   = g_icon(:account_circle)

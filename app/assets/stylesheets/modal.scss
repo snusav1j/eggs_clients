@@ -27,32 +27,3 @@
 .modal.show .modal-dialog {
   transform: translateY(0);
 }
-
-.modal-content {
-  background: var(--secondary-color);
-  border-radius: 10px !important;
-  position: relative;
-  border: 2px solid var(--border-color);
-}
-
-.modal-header,
-.modal-footer {
-  padding: 10px;
-}
-.modal-header {
-  background: #212326;
-  border-bottom: 2px solid var(--border-color);
-  border-radius: 10px 10px 0 0 !important;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.modal-footer {
-  background: #212326;
-  border-top: 2px solid var(--border-color);
-  border-radius: 0 0 10px 10px !important;
-}
-.modal-body {
-  background: var(--secondary-color);
-  padding: 15px;
-}

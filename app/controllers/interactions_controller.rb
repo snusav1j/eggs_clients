@@ -29,7 +29,7 @@ class InteractionsController < ApplicationController
 
   def update
     @interaction = Interaction.find(params[:id])
-    @updated = @interaction.update(interaction_params)
+    @updated = @interaction.update(interaction_params) if current_user.can_interact_with_client?(@interaction.client)
 
     @interactions = Interaction.all
     respond_to :js

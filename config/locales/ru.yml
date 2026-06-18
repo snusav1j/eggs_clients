@@ -1,4 +1,13 @@
 ru:
+  controller:
+    users:
+      new: Новый пользователь
+    clients:
+      new: Новый клиент
+    orders:
+      new: Новый заказ
+    interactions:
+      new: Новое взаимодействие
   global:
     save: Сохранить
     cancel: Отмена

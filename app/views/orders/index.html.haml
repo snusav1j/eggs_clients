@@ -1,7 +1,11 @@
 .box
   .box-header
-    = link_to new_modal_orders_path, remote: true, data: { disable_with: "<i class='fa fa-circle-o-notch fa-spin'></i>" } do 
+    .box-header-title
+      = tm(Order, :title)
+      %span.box-header-count.text-muted= @orders.length > 0 ? @orders.length : ''
+    = link_to new_modal_orders_path, class: "btn btn-primary", remote: true do 
       = fa_icon(:plus)
+      = tc(:new)
 
   .box-body
     %table

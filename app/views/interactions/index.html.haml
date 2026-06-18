@@ -1,7 +1,11 @@
 .box
   .box-header
-    = link_to new_modal_interactions_path, remote: true, data: { disable_with: "<i class='fa fa-circle-o-notch fa-spin'></i>" } do 
+    .box-header-title
+      = tm(Interaction, :title)
+      %span.box-header-count.text-muted= @interactions.length > 0 ? @interactions.length : ''
+    = link_to new_modal_interactions_path, class: "btn btn-primary", remote: true do 
       = fa_icon(:plus)
+      = tc(:new)
 
   .box-body
     %table
@@ -12,9 +16,9 @@
           %th= tm(Interaction, :status)
           %th= tm(Interaction, :comment)
           %th= tm(Interaction, :manager)
-      %tbody
+      %tbody#interactions-list
         - @interactions.each do |interaction|
-          %tr
+          %tr.interaction-row{ data: { interaction_id: interaction.id } }
             %td= interaction.client&.name
             %td= interaction.interaction_type_name
             %td= interaction.status

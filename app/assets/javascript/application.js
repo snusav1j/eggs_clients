@@ -8,3 +8,9 @@
 //= require custom_toastr
 //= require drag
 //= require modal
+//= require general
+
+//= require clients
+//= require interactions
+//= require orders
+//= require users
