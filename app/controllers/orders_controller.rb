@@ -20,8 +20,11 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @created = @order.save
+    @order.manager_id = current_user.id
+    @saved = @order.save
 
+    @order.client.update(status: Client::CLIENT_STATUS_ACTIVE) if @saved
+    
     @orders = Order.all
     respond_to :js
   end

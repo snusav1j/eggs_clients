@@ -40,11 +40,38 @@ ru:
       client:
         title: Клиенты
         name: Имя
+        country: Страна
+        city: Город
+        inn: ИНН
+        ogrn: ОГРН
         phone: Телефон
+        client_type: Тип клиента
         email: Email
         status: Статус
         source: Источник
         comment: Комментарий
+
+        client_status_1: Новый
+        client_status_2: Потенциальный
+        client_status_3: Активный
+        client_status_4: Неактивный
+        client_status_5: Постоянный
+
+        client_type_1: Дистрибьютор
+        client_type_2: Оптовик
+        client_type_3: Розничный магазин
+        client_type_4: Сеть магазинов
+        client_type_5: Кафе
+        client_type_6: Ресторан
+        client_type_7: Пекарня
+        client_type_8: Кондитерское производство
+        client_type_9: Пищевое производство
+        client_type_10: Кейтеринг / столовая
+        client_type_11: Гостиница
+        client_type_12: Фермер / производитель
+        client_type_13: Госучреждение
+        client_type_14: Маркетплейс / онлайн
+        client_type_15: Прочее
 
       order:
         title: Заказы

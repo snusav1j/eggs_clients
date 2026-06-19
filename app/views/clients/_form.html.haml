@@ -3,6 +3,12 @@
     = f.input :name
     = f.input :phone
     = f.input :email
-    = f.input :status
+    = f.input :status, as: :select, collection: Client::CLIENT_STATUSES.map { |ct| [tm(Client, "client_status_#{ct}"), ct] }
+    = f.input :client_type, as: :select, collection: Client::CLIENT_TYPES.map { |ct| [tm(Client, "client_type_#{ct}"), ct] }
     = f.input :source
+    = f.label :country, 'Страна'
+    = f.country_select :country
+    -# = f.input :city
+    = f.input :inn
+    = f.input :ogrn
     = f.input :comment
