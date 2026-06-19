@@ -27,6 +27,9 @@
       #content
         - if current_user
           .content-header
+            .sidebar-controls.hide-show-sidebar
+              .hide-show-sidebar-btn= g_icon(:chevron_left)
+              .hide-show-sidebar-btn{ style: "display: none;" }= g_icon(:chevron_right)
             .content-header-controls
               .content-user-info
                 .content-user-info-item

@@ -316,14 +316,23 @@ a{
     text-align: center;
     font-weight: 700;
     font-size: 18px;
-    padding: 15px 20px 10px 20px;
+    padding: 12px 20px 10px 20px;
     .logo{
       background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      justify-content: center;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      font-size: 20px;
       font-weight: 700;
       pointer-events: none;
+      .logo-text{
+        font-size: 20px;
+      }
+      .logo-icon span{
+        font-size: 30px;
+      }
     }
   }
   .sidebar-body{
@@ -375,7 +384,37 @@ a{
   }
 }
 
+#sidebar{
+  width: 260px;
+  transition: width .25s ease;
+
+  .hide-show{
+    transition: transform .25s ease;
+  }
+
+  &.hide{
+    width: 72px;
+
+    .logo-text,
+    .sidebar-title{
+      opacity: 0;
+      pointer-events: none;
+      display: none;
+    }
+
+  }
+
+  .logo-text,
+  .sidebar-title{
+    transition: opacity .15s ease;
+    white-space: nowrap;
+  }
+}
+
 #content{
+  .content-header{
+    position: relative;
+  }
   .box-header,
   .box-body{
     padding: 20px;
@@ -389,6 +428,18 @@ a{
     .box-header-count{
       font-size: 22px;
       font-weight: 500;
+    }
+  }
+  .sidebar-controls{
+    position: absolute;
+    left: -12px;
+    border: var(--border);
+    background: var(--main-color);
+    border-radius: 50%;
+    width: 25px; height: 25px;
+    cursor: pointer;
+    .material-symbols-outlined{
+      font-size: 22px;
     }
   }
 }

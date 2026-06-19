@@ -11,3 +11,9 @@ window.fix_text_area_height = ->
       setTimeout(set_height, 20)
 
       textarea.addEventListener 'input', set_height
+
+$ ->
+
+  $(document).on 'click', '.hide-show-sidebar', ->
+    $('#sidebar').toggleClass('hide')
+    $('.hide-show-sidebar-btn').toggle()
