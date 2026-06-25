@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :orders, foreign_key: :manager_id
   has_many :interactions, foreign_key: :manager_id
 
+  has_one :user_setting, dependent: :destroy
+
   after_initialize :set_default_role, if: :new_record?
 
   scope :active, -> { where.not(banned: true) }
@@ -32,6 +34,14 @@ class User < ApplicationRecord
 
   def manager?
     role == 'manager'
+  end
+
+  def set_sidebar_state(state)
+    (self.user_setting || self.create_user_setting).update(hide_sidebar: state)
+  end
+
+  def get_sidebar_state
+    self.user_setting&.hide_sidebar
   end
 
   private

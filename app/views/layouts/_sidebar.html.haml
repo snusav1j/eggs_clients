@@ -1,22 +1,22 @@
-#sidebar
+#sidebar{ class: current_user.get_sidebar_state ? "hide" : "" }
   .sidebar-header
     .logo
       .logo-icon= g_icon(:egg)
       .logo-text EggClients
   .sidebar-body
-    .sidebar-item
+    .sidebar-item{ class: clients_path.include?(@cur_url) ? 'active' : '' }
       = link_to clients_path do
         = g_icon(:groups_2)
         .sidebar-title
           = tm(Client, :title)
         
-    .sidebar-item
+    .sidebar-item{ class: interactions_path.include?(@cur_url) ? 'active' : '' }
       = link_to interactions_path do
         = g_icon(:phone)
         .sidebar-title
           = tm(Interaction, :title)
         
-    .sidebar-item
+    .sidebar-item{ class: orders_path.include?(@cur_url) ? 'active' : '' }
       = link_to orders_path do
         = g_icon(:receipt_long)
         .sidebar-title

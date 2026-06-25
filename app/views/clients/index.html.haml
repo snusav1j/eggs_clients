@@ -7,38 +7,35 @@
       = fa_icon(:plus)
       = tc(:new)
   .box-body
-    %table
-      %thead
-        %tr
-          %th.text-muted ID
-          %th.text-muted= tm(Client, :name)
-          %th.text-muted= tm(Client, :client_type)
-          %th.text-muted.text-center= tm(Client, :status)
-          %th.text-muted.text-center= tm(Client, :country)
-          -# %th.text-muted= tm(Client, :city)
-          %th.text-muted= tm(Client, :inn)
-          %th.text-muted= tm(Client, :ogrn)
-          %th.text-muted= tm(Client, :phone)
-          %th.text-muted= tm(Client, :email)
-          %th.text-muted= tm(Interaction, :title)
-          -# %th.text-muted= tm(Client, :source)
-          -# %th= tm(Client, :comment)
-      %tbody#clients-list
-        - @clients.each do |client|
-          %tr.client-row{ data: { client_id: client.id } }
-            %td.text-muted= client.id
-            %td= client.name
-            %td= client.client_type_name
-            %td.text-center= client.status_name
-            %td.text-center= client.country
-            -# %td= client.city
-            %td= client.inn
-            %td= client.ogrn
-            %td= client.phone
-            %td= client.email
-            %td
-              = client.interactions.length > 0 ? client.interactions.length : ''
-            -# %td= client.source
-            -# %td= client.comment
+    .nav-tabs-custom.table-nav
+      %ul.tabs
+        %li.active
+          %a{href: "#all"} Все
+        %li
+          %a{href: "#new_clients"} Новые
+        %li
+          %a{href: "#potential"} Потенциальные
+        %li
+          %a{href: "#active"} Активные
+        %li
+          %a{href: "#regular"} Постоянные
+        %li
+          %a{href: "#inactive"} Нективные
+    -# %input
+    .tab-content
+      #all.tab-pane.active
+        = render partial: 'list', locals: { clients: @clients }
+      #new_clients.tab-pane
+        = render partial: 'list', locals: { clients: @clients_new }
+      #potential.tab-pane
+        = render partial: 'list', locals: { clients: @clients_potential }
+      #active.tab-pane
+        = render partial: 'list', locals: { clients: @clients_active }
+      #inactive.tab-pane
+        = render partial: 'list', locals: { clients: @clients_inactive }
+      #regular.tab-pane
+        = render partial: 'list', locals: { clients: @clients_regular }
+
+
 
 #client-modal-outer

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_19_133429) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_25_122405) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -60,6 +60,14 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_19_133429) do
     t.integer "manager_id"
     t.index ["client_id"], name: "index_orders_on_client_id"
     t.index ["manager_id"], name: "index_orders_on_manager_id"
+  end
+
+  create_table "user_settings", force: :cascade do |t|
+    t.integer "user_id"
+    t.boolean "hide_sidebar", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_settings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

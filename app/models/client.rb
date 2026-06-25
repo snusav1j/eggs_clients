@@ -54,6 +54,12 @@ class Client < ApplicationRecord
     CLIENT_STATUS_REGULAR
   ]
 
+  scope :new_clients, -> { where(status: CLIENT_STATUS_NEW) }
+  scope :potential, -> { where(status: CLIENT_STATUS_POTENTIAL) }
+  scope :active, -> { where(status: CLIENT_STATUS_ACTIVE) }
+  scope :inactive, -> { where(status: CLIENT_STATUS_INACTIVE) }
+  scope :regular, -> { where(status: CLIENT_STATUS_REGULAR) }
+
   def client_type_name
     tm(Client, "client_type_#{self.client_type}")
   end

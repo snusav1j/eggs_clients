@@ -1,15 +1,22 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    %p= f.label :email
-    %p= f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    %p= f.label :password
-    %p= f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      %p= f.check_box :remember_me
-      %p= f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+#authorization-form
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .authorization-header
+      %h2 Авторизация
+    .authorization-body
+      .row
+        .col-md-12
+          = f.label :email
+          = f.email_field :email, autofocus: true, autocomplete: "email"
+      .row
+        .col-md-12
+          = f.label :password
+          = f.password_field :password, autocomplete: "current-password"
+      - if devise_mapping.rememberable?
+        .row
+          .col-md-12
+            .space-between.align-center
+              = f.label :remember_me
+              = f.check_box :remember_me, class: 'switch'
+    .authorization-footer
+      .actions
+        = f.submit "Войти", class: 'btn-primary'

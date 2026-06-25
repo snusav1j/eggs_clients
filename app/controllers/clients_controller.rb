@@ -2,6 +2,12 @@ class ClientsController < ApplicationController
 
   def index
     @clients = Client.all
+
+    @clients_new = Client.new_clients
+    @clients_potential = Client.potential
+    @clients_active = Client.active
+    @clients_inactive = Client.inactive
+    @clients_regular = Client.regular
   end
 
   def show

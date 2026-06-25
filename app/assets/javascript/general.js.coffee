@@ -17,3 +17,23 @@ $ ->
   $(document).on 'click', '.hide-show-sidebar', ->
     $('#sidebar').toggleClass('hide')
     $('.hide-show-sidebar-btn').toggle()
+    sidebar_hidden = $('#sidebar').hasClass('hide')
+
+    $.ajax 
+      url: "/user_settings/set_sidebar_state",
+      type: 'POST'
+      dataType: 'script'
+      async: true
+      data:
+        sidebar_hidden: sidebar_hidden
+      
+  $(document).on 'click', '.tabs a', (e) ->
+    e.preventDefault()
+
+    target = $(this).attr('href')
+
+    $('.tab-pane').removeClass('active')
+    $(target).addClass('active')
+
+    $('.tabs li').removeClass('active')
+    $(this).parent().addClass('active')

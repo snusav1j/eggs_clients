@@ -14,4 +14,81 @@ class ApplicationController < ActionController::Base
     @http_address = "#{@http_host}/#{@cur_url}"
   end
 
+	def get_val_from_params name
+		val = nil
+		if name.is_a?(Array)
+			val = params
+			while val.is_a?(Hash)
+				name.each do |key|
+					val = val[key] if val
+				end
+			end
+		else
+			val = params[name]
+		end
+		val
+	end
+  
+  def param_i name, default_value=nil
+		val = self.get_val_from_params name
+    val.present? && val.to_i > 0 ? h(val).to_i : default_value
+  end
+
+	def param_a name, default_value=[]
+		res = default_value
+		vals = self.get_val_from_params name
+		if vals.present?
+			vals.each do |val|
+				res << h(val).to_i if val.to_i > 0
+			end
+		end
+		res
+	end
+
+  def param_dec name, default_value=nil
+		val = self.get_val_from_params name
+		return default_value if !val
+		val = val.gsub(',', '.')
+    val.present? && val.to_d > 0 ? h(val).to_d : default_value
+  end
+
+  def param_f name, default_value=nil
+		val = self.get_val_from_params name
+		return default_value if !val
+		val = val.gsub(',', '.')
+    val.present? && val.to_f > 0 ? h(val).to_f : default_value
+  end
+
+  def param_b name, default_value=nil
+		val = self.get_val_from_params name
+    res = default_value
+    res = true if val == "true" || val == '1'
+    res = false if val == "false" || val == '0'
+    res
+  end
+
+  def param_s name, default_value=nil
+		val = self.get_val_from_params name
+    val.present? ? h(val.strip) : default_value
+  end
+
+  def param_d name, default_value=nil
+		val = self.get_val_from_params name
+    val.present? ? h(val).to_date : default_value
+  end
+
+  def param_dt name, default_value=nil
+		val = self.get_val_from_params name
+    val.present? ? h(val).to_datetime : default_value
+  end
+
+  def param_sym name, default_value=false
+    params[name].blank? ? default_value : h(params[name]).to_sym
+  end
+
+	def param_ar name, default_value=[]
+		params[name].present? ? params[name].to_a : default_value
+	end
+
+
 end

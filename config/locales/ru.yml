@@ -39,7 +39,7 @@ ru:
 
       client:
         title: Клиенты
-        name: Имя
+        name: Наименование
         country: Страна
         city: Город
         inn: ИНН

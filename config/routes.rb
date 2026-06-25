@@ -7,7 +7,7 @@ Rails.application.routes.draw do
                sign_out: 'logout'
              }
 
-  root to: 'clients#index'
+  root to: redirect('/clients')
 
   resources :users, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
     collection do
@@ -30,6 +30,15 @@ Rails.application.routes.draw do
     collection do
       get :new_modal
       get :edit_modal
+    end
+    
+    member do
+    end
+  end
+  
+  resources :user_settings do
+    collection do
+      post :set_sidebar_state
     end
     
     member do
